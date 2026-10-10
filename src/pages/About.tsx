@@ -1,6 +1,7 @@
 import Navigation from '../components/Navigation';
 import CustomCursor from '../components/CustomCursor';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Add this import
 
 const About = () => {
   useEffect(() => {
@@ -125,7 +126,7 @@ const About = () => {
               {/* Web Technologies */}
               <div className="mb-12">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <span className="mr-2">💻</span> Web Technologies
+                  <span className="mr-2">🌐</span> Web Technologies
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                   {skills.webTechnologies.map((tech, index) => (

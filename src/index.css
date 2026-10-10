@@ -1,39 +1,38 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
+    --background: 46 64% 96%; /* #F4F0E6 off-white beige */
+    --foreground: 0 0% 0%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 3%;
+    --primary: 50 100% 50%; /* Vibrant yellow */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 198 100% 50%; /* Bright blue */
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 64%;
+    --accent: 330 100% 60%; /* Bright pink */
+    --accent-foreground: 0 0% 0%;
 
-    --accent: 0 0% 10%;
-    --accent-foreground: 0 0% 98%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 0 0% 83%;
+    --border: 0 0% 0%;
+    --input: 0 0% 100%;
+    --ring: 0 0% 0%;
 
-    --radius: 0.5rem;
+    --radius: 0px; /* Sharp corners for brutalism */
   }
 
   * {
@@ -41,7 +40,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans selection:bg-primary selection:text-foreground;
     scroll-behavior: smooth;
   }
 
@@ -51,43 +50,46 @@
 }
 
 @layer components {
+  .brutalist-border {
+    @apply border-[3px] border-black;
+  }
+  
+  .brutalist-shadow {
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  
+  .brutalist-shadow:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  }
+
+  .brutalist-shadow:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+  }
+
   .cursor-glow {
-    cursor: none;
-  }
-  
-  .custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 229, 255, 0.8);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    mix-blend-mode: difference;
-  }
-  
-  .custom-cursor.hover {
-    transform: scale(3);
+    cursor: auto; /* Disable custom cursor for neo-brutalism usually, or keep it raw */
   }
 }
 
 /* Smooth scrolling for webkit browsers */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
+  border-left: 3px solid black;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
-  border-radius: 4px;
+  background: hsl(var(--primary));
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--accent));
 }
